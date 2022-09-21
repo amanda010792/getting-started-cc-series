@@ -1,6 +1,5 @@
 # Workshop - Setting Data in Motion with Confluent Cloud
 
-<<INSERT WORKSHOP DIAGRAM>> 
 
 ## Prerequisites 
 
@@ -80,17 +79,41 @@ We have already set some governance in place by using Schema Registry. Let's see
 
 ## Transform Data Streams Using ksqlDB
 
-In this workshop, we will be using ksqlDB to do some basic transformations and prepare our data for a downstream consumer. Let's assume we have a team who needs access to the transactions data and credit card data, but the team only needs to know that the card is not expired (and therefore don't need to know any PII data). In order to give the team the data they need (while remaining in compliance), we will join the two data streams together, adding a field indicating whether the card is expired, and mask the PII data. ksqlDB queries can be strung together to perform different transformations, and teams can be given access to the data at different transformation stages. The ksql flow to accomplish this is outlined below:     
+In this workshop, we will be using ksqlDB to do some basic transformations and prepare our data for a downstream consumer. Let's assume we have a team who needs access to the transactions data and credit card data, but the team only needs to know that the card is not expired (and therefore don't need to know any PII data). In order to give the team the data they need (while remaining in compliance), we will join the two data streams together, adding a field indicating whether the card is expired, and mask the PII data. ksqlDB queries can be strung together to perform different transformations, and teams can be given access to the data at different transformation stages.    
 
-<<INSERT ksqlDB DATA FLOW DIAGRAM>>     
+
+Today, as this is just an introductory session, we will only focus on a sole part of this data flow. If you want to attempt to finish the use case outlined above, please feel free to do so after the session today. Today, we will focus on masking the PII data in the credit cards topic. Under the ksqlDB tab, you should see the provisioned cluster. Click the cluster name and paste the following into the query editor: 
   
-Today, as this is just an introductory session, we will only focus on the first part of this data flow. If you want to attempt to finish the use case outlined above, please feel free to do so after the session today. In order to join our credit card and transactions data, we will need to create ksqlDB abstractions called streams. Under the ksqlDB tab, you should see the provisioned cluster. Click the cluster name and paste the following into the query editor: 
-  
+
 ```
-  CREATE STREAM transactions WITH (
-    KAFKA_TOPIC = 'agilbert_transactions',
+  CREATE STREAM cards WITH (
+    KAFKA_TOPIC = 'agilbert_cards',
     VALUE_FORMAT = 'JSON_SR'
   );
 ```
-Make sure you set the property "auto.offset.reset" to Earliest! Click "Run Query". 
+  
+Make sure you set the property "auto.offset.reset" to Earliest! Click "Run Query". This will create a stream abstraction on top of your cards topic.     
+  
+Run the following query to mask your PII data (note we have to cast our integer values as strings): 
+```
+CREATE STREAM cards_pii_obfuscated
+    WITH (kafka_topic='cards_pii_obfuscated', value_format='json_sr', partitions=1) AS
+    SELECT CARD_ID AS CARD_ID,
+           MASK(CAST(CARD_NUMBER AS VARCHAR)) AS CARD_NUMBER,
+           MASK(CAST(CVV AS VARCHAR)) AS CVV,
+           MASK(CAST(EXPIRATION_DATE AS VARCHAR)) AS EXPIRATION_DATE
+    FROM CARDS;
+```
+Run the following query to view the newly masked data!: 
+
+  
+  
+```
+SELECT * 
+FROM CARDS_PII_OBFUSCATED 
+EMIT CHANGES;
+```
+
 ## Monitor your Data Streams Using Stream Lineage 
+  
+On the left hand menu, select the "Stream Lineage" tab. Here, we can monitor our data flow. You will see the entire data flow we set up is there: connector, topic, ksqlDB query and subsequent topic. We can drill down into different parts of our data flow. 
