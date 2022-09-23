@@ -87,7 +87,7 @@ Today, as this is just an introductory session, we will only focus on a sole par
 
 ```
   CREATE STREAM cards WITH (
-    KAFKA_TOPIC = 'agilbert_cards',
+    KAFKA_TOPIC = '<YOUR_NAME>_cards',
     VALUE_FORMAT = 'JSON_SR'
   );
 ```
