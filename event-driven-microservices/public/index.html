@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Kafka Consumer App - Connection Protocols</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+
+    <script src="js/socket.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style >
+td {  padding: 10px; }
+
+.floatRight {     float: right; }
+</style>
+
+</head>
+
+<body>
+    <div class="container-fluid">     
+        <h1>Kafka Consumer App - Connection Protocols</h1>
+        <h3>Topics Watched</h3>
+        <div id="topics">
+        </div>
+        <a href="#" onclick="config()">Reread all Topic(s) from Beginning</a>
+        <br/>
+        <h2>Live Kafka Topic Stream</h2>
+        <br/>
+        <table id="topicMessagesTable">
+            <tr>
+                <th>Key&nbsp;</th>
+                <th>Topic&nbsp;</th>
+                <th>Content&nbsp;</th>
+                <th>Partition</th>
+                <th>Offset within Partition</th>
+                <th>Timestamp of Production</th>
+            </tr>
+        </table>
+    </div>
+    <script src="js/topics-management.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="js/message-handler.js"></script>
+
+</body>
+
+</html>
