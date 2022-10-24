@@ -200,4 +200,4 @@ dotnet run --project purchasesproducer.csproj $(pwd)/../dotnet.properties
 
 ## Monitor your Data Streams Using Stream Lineage 
   
-On the left hand menu, select the "Stream Lineage" tab. Here, we can monitor our data flow. You will see the entire data flow we set up is there: connector, topic, ksqlDB query and subsequent topic. We can drill down into different parts of our data 
+On the left hand menu, select the "Stream Lineage" tab. Here, we can monitor our data flow. You will see the entire data flow we set up is there: connector, topic, ksqlDB query and subsequent topic. 
