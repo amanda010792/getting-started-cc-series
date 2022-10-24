@@ -132,6 +132,12 @@ SELECT * FROM cards_user9 emit changes;
 ```
 ## Create services to consume from transactions (filtered), cards (filtered) and stock trades.
 
+### Set up Properties File
+
+#### .NET
+
+edit dotnet.properties file to contain your cluster's bootstrap server (found in cluster settings on cloud dashboard), cluster API key and secret. 
+
 #### Create service to consume from transactions
 
 ## Bonus: Create service to produce purchases data to a topic on Confluent Cloud.
