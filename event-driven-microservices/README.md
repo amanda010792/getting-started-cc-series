@@ -134,6 +134,15 @@ SELECT * FROM cards_user9 emit changes;
 
 #### Create service to consume from transactions
 
+## Bonus: Create service to produce purchases data to a topic on Confluent Cloud.
+
+#### Create Topic 
+
+Create a topic using the Cloud Dashboard called "<YOUR_NAME>_purchases" and change the number of partitions to 1.     
+
+#### Create service to produce to "<YOUR_NAME>_purchases"
+
+
 
 ## Monitor your Data Streams Using Stream Lineage 
   
