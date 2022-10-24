@@ -140,6 +140,44 @@ edit dotnet.properties file to contain your cluster's bootstrap server (found in
 
 #### Create service to consume from transactions
 
+- Open the dotnet/consumer folder 
+- Open the transactionsproducer.cs file and edit the const "topic" to "<YOUR_NAME>_transactions9". 
+- Compile the project: 
+```
+dotnet build transactionsconsumer.csproj
+```
+- Run the producer (referencing your properties file): 
+```
+dotnet run --project transactionsconsumer.csproj $(pwd)/../dotnet.properties
+```
+
+
+#### Create service to consume from trades
+
+- Open the dotnet/consumer folder 
+- Open the tradesproducer.cs file and edit the const "topic" to "<YOUR_NAME>_trades". 
+- Compile the project: 
+```
+dotnet build tradesconsumer.csproj
+```
+- Run the producer (referencing your properties file): 
+```
+dotnet run --project tradesconsumer.csproj $(pwd)/../dotnet.properties
+```
+
+#### Create service to consume from cards
+
+- Open the dotnet/consumer folder 
+- Open the cardsconsumer.cs file and edit the const "topic" to "<YOUR_NAME>_cards_tbl". 
+- Compile the project: 
+```
+dotnet build cardsconsumer.csproj
+```
+- Run the producer (referencing your properties file): 
+```
+dotnet run --project cardsconsumer.csproj $(pwd)/../dotnet.properties
+```
+
 ## Bonus: Create service to produce purchases data to a topic on Confluent Cloud.
 
 #### Create Topic 
@@ -148,7 +186,16 @@ Create a topic using the Cloud Dashboard called "<YOUR_NAME>_purchases" and chan
 
 #### Create service to produce to "<YOUR_NAME>_purchases"
 
-
+- Open the dotnet/producer folder 
+- Open the purchasesproducer.cs file and edit the const "topic" to the name of your topic created above. 
+- Compile the project: 
+```
+dotnet build purchasesproducer.csproj
+```
+- Run the producer (referencing your properties file): 
+```
+dotnet run --project purchasesproducer.csproj $(pwd)/../dotnet.properties
+```
 
 ## Monitor your Data Streams Using Stream Lineage 
   
