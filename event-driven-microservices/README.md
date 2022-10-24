@@ -5,6 +5,7 @@ Before completing this workshop, please ensure you have / have done the followin
 - A Confluent Cloud login with Environment Admin Access to the environment you'll be using 
 - Download the [Confluent CLI](https://docs.confluent.io/confluent-cli/current/install.html)
 - Install [.NET Core](https://dotnet.microsoft.com/en-us/download) (>=6.0)
+- Clone the getting-started-cc-series repository. We will be working off the event-driven-microservices directory today. 
 
 
 ## Provision a Basic Cluster
