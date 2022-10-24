@@ -125,6 +125,15 @@ CREATE STREAM transactions9 WITH (
   AS SELECT * FROM transactions WHERE CARD_ID=9;
 ```
 
+We can check our work with the following queries:     
+```
+SELECT * FROM transactions9 emit changes;
+SELECT * FROM cards_user9 emit changes;
+```
+## Create services to consume from transactions (filtered), cards (filtered) and stock trades.
+
+#### Create service to consume from transactions
+
 
 ## Monitor your Data Streams Using Stream Lineage 
   
