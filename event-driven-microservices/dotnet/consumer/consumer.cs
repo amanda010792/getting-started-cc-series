@@ -15,7 +15,7 @@ class Consumer {
             .AddIniFile(args[0])
             .Build();
 
-        configuration["group.id"] = "kafka-dotnet-getting-started";
+        configuration["group.id"] = "cc-series-event-driven-microservices";
         configuration["auto.offset.reset"] = "earliest";
 
         const string topic = "<YOUR_NAME>_transactions9";
