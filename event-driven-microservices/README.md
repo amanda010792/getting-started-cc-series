@@ -96,7 +96,7 @@ Make sure you set the property "auto.offset.reset" to Earliest! Click "Run Query
 Next, we will need to create a ksql query to filter card data for card id = 9. 
 ```
 CREATE TABLE cards_user9 WITH (
-    KAFKA_TOPIC='agilbert_cards_tbl'
+    KAFKA_TOPIC='<YOUR_NAME>_cards_tbl'
   ) AS
   SELECT
     card_id KEY,
