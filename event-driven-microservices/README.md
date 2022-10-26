@@ -137,7 +137,7 @@ SELECT * FROM cards_user9 emit changes;
 
 #### .NET
 
-edit dotnet.properties file to contain your cluster's bootstrap server (found in cluster settings on cloud dashboard), cluster API key and secret. 
+Navigate to getting-started-cc-series/event-driven-microservices in your editor of choice. Edit dotnet.properties file to contain your cluster's bootstrap server (found in cluster settings on cloud dashboard), cluster API key and secret. 
 
 #### Create service to consume from transactions
 
