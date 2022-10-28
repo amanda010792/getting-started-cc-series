@@ -142,12 +142,12 @@ Navigate to getting-started-cc-series/event-driven-microservices in your editor 
 #### Create service to consume from transactions
 
 - Open the dotnet/consumer folder 
-- Open the transactionsproducer.cs file and edit the const "topic" to "<YOUR_NAME>_transactions9". 
+- Open the transactionsconsumer.cs file and edit the const "topic" to "<YOUR_NAME>_transactions9". 
 - Compile the project: 
 ```
 dotnet build transactionsconsumer.csproj
 ```
-- Run the producer (referencing your properties file): 
+- Run the Consumer (referencing your properties file): 
 ```
 dotnet run --project transactionsconsumer.csproj $(pwd)/../dotnet.properties
 ```
@@ -156,12 +156,12 @@ dotnet run --project transactionsconsumer.csproj $(pwd)/../dotnet.properties
 #### Create service to consume from trades
 
 - Open the dotnet/consumer folder 
-- Open the tradesproducer.cs file and edit the const "topic" to "<YOUR_NAME>_trades". 
+- Open the tradesconsumer.cs file and edit the const "topic" to "<YOUR_NAME>_trades". 
 - Compile the project: 
 ```
 dotnet build tradesconsumer.csproj
 ```
-- Run the producer (referencing your properties file): 
+- Run the Consumer (referencing your properties file): 
 ```
 dotnet run --project tradesconsumer.csproj $(pwd)/../dotnet.properties
 ```
@@ -174,7 +174,7 @@ dotnet run --project tradesconsumer.csproj $(pwd)/../dotnet.properties
 ```
 dotnet build cardsconsumer.csproj
 ```
-- Run the producer (referencing your properties file): 
+- Run the Consumer (referencing your properties file): 
 ```
 dotnet run --project cardsconsumer.csproj $(pwd)/../dotnet.properties
 ```
